@@ -15,7 +15,7 @@
     body {
       background: whitesmoke;
       overflow: hidden;
-      margin: 0 2%
+      margin: 0 2%;
     }
 
     .card-header {
@@ -33,12 +33,16 @@
       text-align: center;
     }
     .card{
-      height: 351px!important;
+      height: 345px!important;
+      
     }
  
     .table-responsive{
     width: 100%;
+    background: rgba(0, 0, 0, 0.05);
     height:380px;
+    padding-bottom: 50px;
+    margin-bottom: 100px;
     overflow-y:scroll;
     } 
     thead tr:nth-child(1) th{
@@ -52,7 +56,7 @@
 
 <body>
   <!-- main Page -->
-  <br><br>
+  <br>
   <div class="row">
     <div class="col-md-4">
       <div class="card">
@@ -72,7 +76,7 @@
           </div>
           <br>
           <center>
-            <button type="button" class="btn btn-outline-dark btn-publish">Publish</button>
+            <button type="button" class="btn btn-sm btn-outline-dark btn-publish">Publish</button>
           </center>
         </div>
       </div>
@@ -97,8 +101,8 @@
               <span class="status">Disconnected</span>
             </div>
             <br>
-            <button type="button" class="btn btn-outline-dark broker-btn btn-connect">Connect</button>
-            <button type="button" class="btn btn-outline-dark broker-btn btn-disconnect">Disconnect</button>
+            <button type="button" class="btn btn-sm btn-outline-dark broker-btn btn-connect">Connect</button>
+            <button type="button" class="btn btn-sm btn-outline-dark broker-btn btn-disconnect">Disconnect</button>
 
           </center>
         </div>
@@ -116,7 +120,7 @@
             <span class="bmd-help">Input the Topic to Subscribe...</span>
             <br><br>
             <center>
-              <button type="button" class="btn btn-outline-dark broker-btn btn-subscribe">Subscribe</button>
+              <button type="button" class="btn btn-sm btn-outline-dark broker-btn btn-subscribe">Subscribe</button>
               <!-- <button type="button" class="btn btn-outline-dark broker-btn btn-unsubscribe">Unsubscribe</button> -->
             </center>
           </div>

@@ -49,11 +49,8 @@ $(document).ready(function () {
           text: 'Please add a Topic or/and a Payload!',
         });
       } else {
-        client.publish(my_topic, my_payload, function () {
-          // var timeAdded = new Date;
-          // timestamp = timeAdded.getDay() + '-' + (timeAdded.getMonth() + 1) + '-' + timeAdded.getFullYear() + " " + timeAdded.getHours() + ":" + timeAdded.getMinutes() + ":" + timeAdded.getSeconds()
-          timestamp = moment().format('MMMM Do YYYY, h:mm:ss a')
-        })
+        client.publish(my_topic, my_payload)
+        timestamp = moment().format('MMMM D YYYY , h:mm:ss a')
         Swal.fire({
           type: 'success',
           title: 'Success...',
@@ -78,7 +75,7 @@ $(document).ready(function () {
         });
         // $(".btn-unsubscribe").attr("disabled", false);
 
-        client.subscribe( topic_s);
+        client.subscribe(topic_s);
       }
     });
 
