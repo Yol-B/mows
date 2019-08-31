@@ -44,12 +44,14 @@ $(document).ready(function() {
         });
       } else {
         $(".status").text("connecting...")
+        $(btn).attr("disabled",true)
         client = mqtt.connect(address);
         client.on("connect", function() {
           Swal.fire({
             type: 'success',
             title: 'Connected Successfilly!'
           });
+        $(btn).attr("disabled",false)
           disenableButton(false)
           swapButton("btn-disconnect negative", "btn-connect positive", "Connected", "Disconnect", "green", "red")
         })
