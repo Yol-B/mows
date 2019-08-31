@@ -2,168 +2,209 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>SD-elective mqtt</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
-  <!-- Material Design for Bootstrap CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
-    integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
-  <style>
-    html,
-    body {
-      background: whitesmoke;
-      overflow: hidden;
-      margin: 0 2%;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Broker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <style>
+        html {
+            height: 100%;
+        }
 
-    .card-header {
-      /* background: grey !important; */
-      color: white;
-      font-weight: bold;
-    }
+        .content {
+            height: 330px;
+        }
 
-    .h4 {
-      margin-bottom : 0 !important;
-    }
+        .header {
+            text-align: center;
+        }
 
-    .bg-info th{
-      color: white!important;
-      text-align: center;
-    }
-    .card{
-      height: 345px!important;
-      
-    }
- 
-    .table-responsive{
-    width: 100%;
-    background: rgba(0, 0, 0, 0.05);
-    height:380px;
-    padding-bottom: 50px;
-    margin-bottom: 100px;
-    overflow-y:scroll;
-    } 
-    thead tr:nth-child(1) th{
-    position: sticky;
-    background: #2196f3;
-    top: 0;
-    z-index: 10;
-  }
-  </style>
+        .label {
+            text-align: justify;
+            float: left
+        }
+
+        table tr {
+            text-align: center
+        }
+
+        #notif {
+            float: right;
+        }
+    </style>
 </head>
 
 <body>
-  <!-- main Page -->
-  <br>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-header bg-info">
-          <p class="h4 text-center">Publish</p>
+
+    <br>
+    <div class="ui modal">
+        <div class="header">
+            Messages
         </div>
-        <div class="card-body">
-          <div class="form-group">
-            <label for="address" class="bmd-label-static">Topic</label>
-            <input type="text" class="form-control" id="topic" placeholder="">
-            <span class="bmd-help">Input topic you want to Publish...</span>
-          </div>
-          <div class="form-group">
-            <label for="address" class="bmd-label-static">Payload</label>
-            <input type="text" class="form-control" id="payload" placeholder="">
-            <span class="bmd-help">Input the Payload of the Topic...</span>
-          </div>
-          <br>
-          <center>
-            <button type="button" class="btn btn-sm btn-outline-dark btn-publish">Publish</button>
-          </center>
+        <div class=" content">
+            <table class="ui sortable celled table">
+                <thead>
+
+                    <tr>
+                        <th>Topic</th>
+                        <th>Message</th>
+                        <th>TimeSpan</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
         </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-header bg-info">
-          <p class="h4 text-center">Broker</p>
-        </div>
-        <div class="card-body">
-          <center>
-            <div class="form-group">
-              <label for="address" class="bmd-label-static">Address</label>
-              <input type="text" class="form-control" id="address" value="ws://broker.hivemq.com:8000/mqtt" placeholder="">
-              <span class="bmd-help">Input the broker address you want to connect...</span>
+        <div class="actions">
+            <div class="ui black deny button">
+                Close
             </div>
-            <br>
-
-            <p class="h6"><b>Status</b></p>
-
-            <div class="alert alert-secondary status-bar" role="alert">
-              <span class="status">Disconnected</span>
+        </div>
+    </div>
+    <h2 class="ui icon header aligned center">
+        <i aria-hidden="true" class="settings icon"></i>
+        <div class="sub header">MQTT over Websocket </div>
+    </h2>
+    <br>
+    <br>
+    <div class="ui stackable divided three column centered grid container">
+        <div class=" stackable three column row">
+            <div class="column">
+                <center>
+                    <div class="ui card">
+                        <div class="content">
+                            <div class="header">
+                                <p class="h4 text-center">Publish</p>
+                            </div>
+                            <hr>
+                            <div class="description">
+                                <!-- publisher card -->
+                                <br>
+                                <div class="ui fluid form">
+                                    <div class="field" placeholder="Topic">
+                                        <div class="ui pointing below label">
+                                            Please enter a Topic
+                                        </div>
+                                        <input type="text" id="topic">
+                                    </div>
+                                    <br>
+                                    <div class="field" placeholder="Payload">
+                                        <div class="ui pointing below label">
+                                            Please enter your Message
+                                        </div>
+                                        <input type="text" id="payload">
+                                    </div>
+                                </div>
+                                <br>
+                                <center>
+                                    <button class="ui right wifi icon positive button button btn-publish">
+                                        <i class="sellsy icon"></i>
+                                        Publish
+                                    </button>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </center>
             </div>
-            <br>
-            <button type="button" class="btn btn-sm btn-outline-dark broker-btn btn-connect">Connect</button>
-            <button type="button" class="btn btn-sm btn-outline-dark broker-btn btn-disconnect">Disconnect</button>
+            <div class="column">
+                <center>
+                    <div class="ui card">
+                        <div class="content">
+                            <div class="header">
+                                <p class="h4 text-center">Broker</p>
+                            </div>
+                            <hr>
+                            <div class="description">
+                                <!-- connector card -->
+                                <br>
+                                <div class="ui fluid form">
+                                    <div class="field" placeholder="Topic">
+                                        <div class="ui pointing below label">
+                                            Address
+                                        </div>
+                                        <input type="text" id="address" value="ws://broker.hivemq.com:8000/mqtt">
+                                    </div>
+                                    <br>
+                                    <!-- status -->
+                                </div>
 
-          </center>
+                                <div class="ui visible red message">
+                                    <p class="status"> Disconnected</p>
+                                </div>
+                                <br>
+                                <center>
+                                    <button id="conBtn" class="ui left wifi icon positive button btn-connect">
+                                        <i class="wifi icon"></i>
+                                        <span id="text">Connect</span>
+                                    </button>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </center>
+            </div>
+            <div class="column">
+                <center>
+                    <div class="ui card">
+
+                        <div class="content">
+                            <div class="header">
+                                <p class=""><a id="notif" class="ui label ">
+                                       <span id="counter" class=""> <i class="mail icon"></i>!</span>
+                                    </a>Subscriber</p>
+
+
+                            </div>
+                            <hr>
+                            <div class="description">
+                                <!-- subscriber card -->
+                                <br>
+                                <div class="ui fluid form">
+                                    <div class="field" placeholder="Topic">
+                                        <div class="ui pointing below label">
+                                            Please enter a Topic to Subscribe
+                                        </div>
+                                        <input type="text" id="topic_s">
+                                    </div>
+                                    <p></p>
+                                </div>
+                                <center>
+                                    <button class="ui right positive icon button btn-subscribe">
+                                        <i class="thumbs up icon"></i>
+                                        Subscribe
+                                    </button>
+                                </center>
+                                <br>
+                                <select class="ui fluid search selection dropdown">
+                                    <option value="" disabled selected>Select a topic to Unscubscribe</option>
+                                </select>
+                                <center>
+                                    <br>
+                                    <button class="ui right negative icon button btn-unsubscribe">
+                                        <i class="thumbs down icon"></i>
+                                        Unsubscribe
+                                    </button>
+                                </center>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+            </div>
         </div>
-      </div>
+        </center>
     </div>
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-header bg-info">
-          <p class="h4 text-center">Subscribe</p>
-        </div>
-        <div class="card-body">
-          <div class="form-group">
-            <label for="topic_s" class="bmd-label-static">Topic</label>
-            <input type="text" class="form-control" id="topic_s" placeholder="">
-            <span class="bmd-help">Input the Topic to Subscribe...</span>
-            <br><br>
-            <center>
-              <button type="button" class="btn btn-sm btn-outline-dark broker-btn btn-subscribe">Subscribe</button>
-              <!-- <button type="button" class="btn btn-outline-dark broker-btn btn-unsubscribe">Unsubscribe</button> -->
-            </center>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <br><br>
 
-  <div class="row">
-    <div class="col-md-12">
-      <p class="h6 text-center"><b>Incoming Messages</b></p>
-      <br>
-      <div class="messages table-responsive">
-        <table class="table table-md text-center table-hover ">
-          <thead class="bg-info">
-            <tr>
-              <th scope="col-4">Topic</th>
-              <th scope="col-4">Payload</th>
-              <th scope="col-4">Timestamp</th>
-            </tr>
-          </thead>
-          <tbody>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <br><br><br><br>
-
-
-  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-    crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
-    crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-  <script src="scripts/browserMqtt.js"></script>
-  <script src="scripts/controller.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.js" -->
+    <!-- integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
+    <script src="scripts/browserMqtt.js"></script>
+    <script src="scripts/controller.js"></script>
 </body>
 
 </html>
